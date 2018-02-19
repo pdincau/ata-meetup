@@ -1,4 +1,4 @@
-class GreetingService {
+public class GreetingService {
 
     public String greet(String name) {
         if ("".equals(name)) {
