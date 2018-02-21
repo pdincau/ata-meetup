@@ -46,7 +46,7 @@ public class Application {
         String countryCode = context.pathArgs().get("country");
         ZipInfo zipInfo = zipService.dataFor(countryCode, zipCode);
         if (zipInfo != null) {
-            return Response.of(OK, new Gson().toJson(zipInfo));
+            return Response.of(OK, new Gson().toJson(zipInfo)).withHeader("Content-Type", "application/json");
         } else {
             return Response.of(NOT_FOUND, "tuple (country, zip code) invalid.");
         }
