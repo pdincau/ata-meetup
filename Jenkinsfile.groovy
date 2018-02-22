@@ -30,7 +30,7 @@ node {
     }
 
     stage("UAT") {
-        build job: 'UAT'
+        build job: 'ata-meetup/UAT'
     }
 
 }
