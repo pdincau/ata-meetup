@@ -13,7 +13,7 @@ node {
         app = docker.build("pdincau/ata-meetup")
     }
 
-    stage("UAT") {
+    stage("Test vs Container") {
         docker.image('pdincau/ata-meetup').withRun('-p 9999:8080') { c ->
             sh 'sleep 5'
             sh 'curl -v --fail 127.0.0.1:9999/ping'
@@ -22,10 +22,15 @@ node {
     }
 
     stage("Push Image") {
-        app.push("${env.BUILD_NUMBER}")
+        //app.push("${env.BUILD_NUMBER}")
     }
 
     stage("Deploy") {
-        sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
+        //sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
     }
+
+    stage("UAT") {
+        build job: 'UAT'
+    }
+
 }
