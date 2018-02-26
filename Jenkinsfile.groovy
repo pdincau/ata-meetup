@@ -22,7 +22,7 @@ node {
     }
 
     stage("Push Image") {
-        //app.push("${env.BUILD_NUMBER}")
+        app.push("${env.BUILD_NUMBER}")
     }
 
     stage("Deploy") {
@@ -30,7 +30,7 @@ node {
     }
 
     stage("UAT") {
-        build job: 'ata-meetup/UAT'
+        build job: 'ata-meetup/rest-assured-test'
     }
 
 }
