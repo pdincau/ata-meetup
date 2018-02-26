@@ -26,7 +26,8 @@ node {
     }
 
     stage("Deploy") {
-        //sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
+        //sh "kubeclt apply -f deployment.yaml"
+        sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
     }
 
     stage("Rest Assured Test") {
