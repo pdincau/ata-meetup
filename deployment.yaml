@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ata-meetup
-        image: pdincau/ata-meetup:1
+        image: pdincau/ata-meetup:3
         ports:
         - containerPort: 8080
 
