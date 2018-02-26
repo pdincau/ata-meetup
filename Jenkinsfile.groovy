@@ -29,7 +29,7 @@ node {
         //sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
     }
 
-    stage("UAT") {
+    stage("Rest Assured Test") {
         build job: 'ata-meetup/rest-assured-test'
     }
 
