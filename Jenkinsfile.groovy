@@ -25,13 +25,4 @@ node {
         app.push("${env.BUILD_NUMBER}")
     }
 
-    stage("Deploy") {
-        //sh "kubeclt apply -f deployment.yaml"
-        sh "kubectl set image deployment/ata-meetup-deployment ata-meetup=pdincau/ata-meetup:${env.BUILD_NUMBER}"
-    }
-
-    stage("Rest Assured Test") {
-        build job: 'ata-meetup/rest-assured-test'
-    }
-
 }
